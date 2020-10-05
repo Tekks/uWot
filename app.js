@@ -12,36 +12,25 @@ new WS(config.web.port, client)
 // ToDo: CommandHandler
 
 client.on('message', message => {
-	
+
     if (!message.content.startsWith(config.discord.prefix) || message.author.bot) return;
-    
+
     const args = message.content.substring(config.discord.prefix.length).trim().split(/\s+/)
     const command = args.shift().toLowerCase()
     const cmdMatches = ['honk', 'airhorn', 'autism', 'snens']
 
     if (cmdMatches.includes(command)) {
-		let userId = message.author.id
+        let userId = message.author.id
 
-		const voiceUtil = new VoiceUtil()
-		let voiceChannel = voiceUtil.getVoiceChannel(client, userId)
+        const voiceUtil = new VoiceUtil()
+        let voiceChannel = voiceUtil.getVoiceChannel(client, userId)
 
         if (voiceChannel) {
-			voiceUtil.connectVoiceChannel(voiceChannel)
-					.then(() => voiceUtil.playAudio('/var/www/tks.wtf/public/sounds/airhorn.mp3', true))
-		}
-        
-        
-        
-        
-        //const voiceUtil = new VoiceUtil()
-		//const voiceChannel = voiceUtil.getVoiceChannel(client, message.author)
-		//console.log(JSON.stringify(voiceChannel))
-		//await voiceUtil.connectVoiceChannel(voiceChannel)
-		//voiceUtil.playAudio('/var/www/tks.wtf/public/sounds/airhorn.mp3', true)
+            voiceUtil.connectVoiceChannel(voiceChannel)
+                .then(() => voiceUtil.playAudio('/var/www/tks.wtf/public/sounds/airhorn.mp3', true))
+        }
     }
 })
-
-
 
 
 client.on('ready', () => {
