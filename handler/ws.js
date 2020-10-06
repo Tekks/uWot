@@ -37,7 +37,7 @@ class WebSocket {
 
   registerRoots() {
     // Search Engines
-    this.app.get('/../robots.txt', function (req, res) {
+    this.app.get('/robots.txt', function (req, res) {
       res.type('text/plain');
       res.send("User-agent: *\nDisallow: /");
     });
