@@ -178,7 +178,7 @@ btn-outline-primary {
 
 .custom-file-input[disabled]~.custom-file-label,
 .custom-file-input:disabled~.custom-file-label {
-  background-color: #e9ecef;
+	background-color: #e9ecef;
 }
 
 .custom-range:focus::-webkit-slider-thumb {
@@ -519,4 +519,12 @@ header.masthead h1 {
 
 .text-white-75 {
 	color: rgba(255, 255, 255, 0.75);
+}
+
+.c-shadow-footer {
+	box-shadow: 0 -3px 6px rgba(0, 0, 0, 0.30), 0 -3px 6px rgba(0, 0, 0, 0.30);
+}
+
+.c-shadow-middle {
+	box-shadow: inset -1px 7px 6px rgba(0, 0, 0, 0.30), 1px 5px 4px rgba(0, 0, 0, 0.30);
 }
