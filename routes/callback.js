@@ -19,6 +19,7 @@ module.exports = function (client) {
                 if (voiceChannel) {
                     await voiceUtil.connectVoiceChannel(voiceChannel)
                     await voiceUtil.playAudio('/var/www/tks.wtf/public/sounds/airhorn.mp3', true)
+                    client.users.cache.get(user.id).send("You got Honked")
                 }
             }
         })
