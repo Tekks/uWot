@@ -42,7 +42,7 @@ module.exports = function (client) {
             "icon": 858,
             "goalData": {
               "start": 0,
-              "current": Math.round(onlineMembers/offlineMembers*100),
+              "current": Math.round(onlineMembers/(offlineMembers+onlineMembers)*100),
               "end": 100,
               "unit": "%"
             }
