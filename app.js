@@ -1,5 +1,5 @@
 const fs = require('fs')
-const WS = require('./ws')
+const WS = require('./handler/ws')
 const Discord = require('discord.js')
 const VoiceUtil = require('./handler/voice.js')
 const config = require('./config')

@@ -19,14 +19,14 @@ class WebSocket {
     this.client = client
     this.app = express()
 
-    this.app.set('views', path.join(__dirname, 'views'));
+    this.app.set('views', path.join(__dirname, '/../views'));
     this.app.set('view engine', 'pug');
 
     this.app.use(logger('dev'));
     this.app.use(express.json());
     this.app.use(express.urlencoded({ extended: false }));
     this.app.use(cookieParser());
-    this.app.use(express.static(path.join(__dirname, 'public')));
+    this.app.use(express.static(path.join(__dirname, '/../public')));
 
     this.registerRoots()
 
@@ -37,15 +37,15 @@ class WebSocket {
 
   registerRoots() {
     // Search Engines
-    this.app.get('/robots.txt', function (req, res) {
+    this.app.get('/../robots.txt', function (req, res) {
       res.type('text/plain');
       res.send("User-agent: *\nDisallow: /");
     });
     // Router
-    this.app.use('/', require('./routes/index')(this.client));
-    this.app.use('/uwot', require('./routes/uwot')(this.client));
-    this.app.use('/api/lametric/uwot/poll', require('./routes/api')(this.client));
-    this.app.use('/api/lametric/uwot/push', require('./routes/callback')(this.client));
+    this.app.use('/', require('../routes/index')(this.client));
+    this.app.use('/uwot', require('../routes/uwot')(this.client));
+    this.app.use('/api/lametric/uwot/poll', require('../routes/api')(this.client));
+    this.app.use('/api/lametric/uwot/push', require('../routes/callback')(this.client));
 
     // Error Handler
     this.app.use(function (req, res, next) {
