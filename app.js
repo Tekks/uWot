@@ -17,7 +17,7 @@ client.on('message', message => {
 
     const args = message.content.substring(config.discord.prefix.length).trim().split(/\s+/)
     const command = args.shift().toLowerCase()
-    const cmdMatches = ['honk', 'airhorn', 'autism', 'snens']
+    const cmdMatches = ['honk', 'airhorn']
 
     if (cmdMatches.includes(command)) {
         let userId = message.author.id
