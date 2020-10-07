@@ -14,6 +14,7 @@ client.on('message', message => {
     const args = message.content.substring(config.discord.prefix.length).trim().split(/\s+/)
     const command = args.shift().toLowerCase()
     try {
+        if (!command) return message.reply('command not found 🧐')
         client.commands.find(cmd => cmd.aliases && cmd.aliases.includes(command) || cmd.name.includes(command)).execute(client, message, args)
     } catch (error) {
         message.reply('command not found 🧐')
