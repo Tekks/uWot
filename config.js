@@ -7,6 +7,6 @@ config.web = {};
 config.discord.token = process.env.DISCORD_TOKEN
 config.web.port = 3000;
 
-config.discord.prefix = "°!-"
+config.discord.prefix = ",,"
 
 module.exports = config;
