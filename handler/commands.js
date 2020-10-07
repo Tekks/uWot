@@ -8,12 +8,10 @@ const fs = require('fs')
 class Commands {
     constructor(Discord, client) {
         client.commands = new Discord.Collection()
-        const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'))
+        const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'), file => file.startsWith('_'))
         for (const file of commandFiles) {
             const command = require(`../commands/${file}`)
-            command.name.forEach(name => {
-                client.commands.set(name, command)
-            })
+            client.commands.set(command.name, command)
         }
     }
 }
