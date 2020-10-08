@@ -13,6 +13,7 @@ module.exports = {
             .setColor('#fedd58')
             .setTitle('Help - Commands')
             .setAuthor('uWot Bot', 'https://cdn.discordapp.com/avatars/755913893062246511/2d6c33c51b36565a2f57ad1a1fc508b1.png', 'https://tks.wtf/#uwot')
+            .setFooter(`Response Time: ${Date.now() - message.createdTimestamp} ms`)
         if (!args.length) {
             commands.map(command => embed.addField(config.discord.prefix + command.name, command.description))
             embed.setDescription(`\nYou can send \`${config.discord.prefix}help [command name]\` to get info on a specific command`)
@@ -26,10 +27,10 @@ module.exports = {
             return message.reply('command not found 🧐')
         }
 
-        embed.setTitle(`Command Details:  ${config.discord.prefix + command.name}`)
+        embed.setTitle(`Command Details:  \`${config.discord.prefix + command.name}\``)
         if (command.aliases) embed.addField('Aliases', command.aliases.join(', '))
         if (command.description) embed.addField('Description', command.description)
-        if (command.usage) embed.addField('Usage', `${config.discord.prefix}${command.name} ${command.usage}`)
+        embed.addField('Usage', `\`${config.discord.prefix}${command.name} ${command.usage}\``)
 
         message.channel.send(embed)
     },
