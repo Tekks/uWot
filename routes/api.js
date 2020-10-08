@@ -5,18 +5,19 @@ var router = express.Router()
 // Influx -> % Arrow red, green and white
 
 module.exports = function (client) {
-  
-  router.get('/', function (req, res, next) {
 
-    var guilds = client.guilds.cache.size;
-    var onlineMembers = 0
-    var offlineMembers = 0
+  router.get('/', function (req, res, next) {
+    var guilds = client.guilds.cache.size
+    var onlineMembersCount = 0
+    var offlineMembersCount = 0
+    var botCount = 0
     client.guilds.cache.forEach((guild) => {
-        var onlineSize = guild.members.cache.filter(member => member.presence.status !== "offline" && member.user.bot === false).size
-        onlineMembers += onlineSize
-        var offlineSize = guild.members.cache.filter(member => member.presence.status !== "online" && member.user.bot === false).size
-        offlineMembers += offlineSize
+      offlineMembersCount += guild.memberCount
+      onlineMembersCount += guild.members.cache.filter(member => member.presence.status !== "offline").size
+      botCount += guild.members.cache.filter(member => member.user.bot === true).size
     });
+    offlineMembersCount -= botCount
+    onlineMembersCount -= botCount
 
     res.setHeader("Content-Type", "application/json")
     res.json(
@@ -27,22 +28,22 @@ module.exports = function (client) {
             "icon": "24552"
           },
           {
-            "text": onlineMembers + offlineMembers,
+            "text": offlineMembersCount + onlineMembersCount,
             "icon": "40358"
           },
           {
-            "text": onlineMembers,
+            "text": onlineMembersCount,
             "icon": "40354"
           },
           {
-            "text": offlineMembers,
+            "text": offlineMembersCount,
             "icon": "40356"
           },
           {
             "icon": 858,
             "goalData": {
               "start": 0,
-              "current": Math.round(onlineMembers/(offlineMembers+onlineMembers)*100),
+              "current": Math.round(onlineMembersCount / (onlineMembersCount + offlineMembersCount) * 100),
               "end": 100,
               "unit": "%"
             }
