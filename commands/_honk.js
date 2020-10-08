@@ -3,7 +3,7 @@ const VoiceUtil = require('../handler/voice.js')
 module.exports = {
     name: 'honk',
     aliases: ['airhorn', 'trumpet', 'wakeup'],
-    usage: ' ',
+    usage: '',
     description: 'Honks at you, if you\'re in an VC',
     execute(client, message, args) {
         const voiceUtil = new VoiceUtil()
