@@ -12,12 +12,13 @@ new Commands(Discord, client)
 client.on('message', message => {
     if (!message.content.startsWith(config.discord.prefix) || message.author.bot) return;
     const args = message.content.substring(config.discord.prefix.length).trim().split(/\s+/)
-    const command = args.shift().toLowerCase()
+    const name = args.shift().toLowerCase()
     try {
-        if (!command) return message.reply('command not found 🧐')
-        client.commands.find(cmd => cmd.aliases && cmd.aliases.includes(command) || cmd.name.includes(command)).execute(client, message, args)
+        if (!name) return
+        const command = client.commands.get(name) || client.commands.find(c => c.aliases && c.aliases.includes(name))
+        command.execute(client, message, args)
     } catch (error) {
-        message.reply('command not found 🧐')
+        console.log(error)
     }
 })
 
