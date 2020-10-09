@@ -20,22 +20,22 @@ module.exports = function (client) {
             "icon": "24552"
           },
           {
-            "text": memberCounts.offline + memberCounts.online,
+            "text": memberCounts.users.total(),
             "icon": "40358"
           },
           {
-            "text": memberCounts.online,
+            "text": memberCounts.users.online(),
             "icon": "40354"
           },
           {
-            "text": memberCounts.offline,
+            "text": memberCounts.users.offline(),
             "icon": "40356"
           },
           {
             "icon": 858,
             "goalData": {
               "start": 0,
-              "current": Math.round(memberCounts.online / (memberCounts.online + memberCounts.offline) * 100),
+              "current": Math.round((memberCounts.users.online() / memberCounts.users.total()) * 100),
               "end": 100,
               "unit": "%"
             }
