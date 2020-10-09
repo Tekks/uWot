@@ -1,6 +1,7 @@
 const { json } = require('express')
 var express = require('express')
 var router = express.Router()
+var stats = require('../util/stats')
 
 // Influx -> % Arrow red, green and white
 
@@ -8,16 +9,7 @@ module.exports = function (client) {
 
   router.get('/', function (req, res, next) {
     var guilds = client.guilds.cache.size
-    var onlineMembersCount = 0
-    var offlineMembersCount = 0
-    var botCount = 0
-    client.guilds.cache.forEach((guild) => {
-      offlineMembersCount += guild.memberCount
-      onlineMembersCount += guild.members.cache.filter(member => member.presence.status !== "offline").size
-      botCount += guild.members.cache.filter(member => member.user.bot === true).size
-    });
-    offlineMembersCount -= botCount
-    onlineMembersCount -= botCount
+    var memberCounts = stats.getMemberCounts(client)
 
     res.setHeader("Content-Type", "application/json")
     res.json(
@@ -28,22 +20,22 @@ module.exports = function (client) {
             "icon": "24552"
           },
           {
-            "text": offlineMembersCount + onlineMembersCount,
+            "text": memberCounts.offline + memberCounts.online,
             "icon": "40358"
           },
           {
-            "text": onlineMembersCount,
+            "text": memberCounts.online,
             "icon": "40354"
           },
           {
-            "text": offlineMembersCount,
+            "text": memberCounts.offline,
             "icon": "40356"
           },
           {
             "icon": 858,
             "goalData": {
               "start": 0,
-              "current": Math.round(onlineMembersCount / (onlineMembersCount + offlineMembersCount) * 100),
+              "current": Math.round(memberCounts.online / (memberCounts.online + memberCounts.offline) * 100),
               "end": 100,
               "unit": "%"
             }
