@@ -52,11 +52,7 @@ class VoiceUtil {
 
 		if (this.playing) await this.stopAudio()
 
-		if (isStream(source)) {
-			this.dispatcher = this.connection.playStream(source)
-		} else {
-			this.dispatcher = this.connection.play(source)
-		}
+		this.dispatcher = this.connection.play(source)
 
 		this.dispatcher.on('error', console.error);
 
