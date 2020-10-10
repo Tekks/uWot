@@ -21,9 +21,9 @@ function getMemberCounts(client) {
 				offline: memberCount - cachedBotCount - onlineUserCount
 			},
 			bots: {
-				total: memberCount - (memberCount - cachedBotCount),
+				total: cachedBotCount,
 				online: onlineBotCount,
-				offline: memberCount - (memberCount - cachedBotCount) - onlineBotCount
+				offline: cachedBotCount - onlineBotCount
 			}
 		})
 	})
