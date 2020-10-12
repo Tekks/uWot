@@ -11,6 +11,10 @@ module.exports = function (client) {
         var voiceUtil = new VoiceUtil()
         
         var user = client.users.cache.find(u => u.tag === req.query.discordUsername)
+        if (!user) {
+            user = client.users.cache.find(u => u.id === req.query.discordUserId)
+        }
+        if (!user) return
 
         client.guilds.cache.forEach(async (guild) => {
             var member = guild.member(user.id)
@@ -19,7 +23,7 @@ module.exports = function (client) {
                 if (voiceChannel) {
                     await voiceUtil.connectVoiceChannel(voiceChannel)
                     await voiceUtil.playAudio('/var/www/tks.wtf/public/sounds/airhorn.mp3', true)
-                    client.users.cache.get(user.id).send("You got Honked")
+                    client.users.cache.get(user.id).send("You got remotely Honked")
                 }
             }
         })
