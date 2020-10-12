@@ -12,6 +12,9 @@ module.exports = {
             voiceUtil.connectVoiceChannel(voiceChannel)
                 .then(() => voiceUtil.playAudio('/var/www/tks.wtf/public/sounds/airhorn.mp3', true))
         }
+        if (message.channel.type == "text"){
+            try { message.delete() }catch{}
+        }
     },
 }
 
