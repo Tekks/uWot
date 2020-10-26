@@ -2,6 +2,7 @@ const WS = require('./handler/ws')
 const config = require('./config')
 const Discord = require('discord.js')
 const Commands = require('./handler/commands.js')
+const mc = require('minecraft-server-util')
 
 var client = new Discord.Client()
 client.config = config
@@ -31,6 +32,18 @@ client.on('ready', () => {
         },
         status: 'dnd'
     })
+    
+    // Update mc Channel
+    setInterval(function () {
+        mc.status('mc.tks.wtf')
+            .then((response) => {
+                client.channels.cache.get("770239786597351444").setName(`🟢mc_server_${response.onlinePlayers}-${response.maxPlayers}`)
+            })
+            .catch((error) => {
+                client.channels.cache.get("770239786597351444").setName(`🔴mc_server_offline`)
+            });
+    }, 120000)
+
 })
 
 client.login(config.discord.token)
