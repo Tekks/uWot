@@ -2,13 +2,14 @@ const WS = require('./handler/ws')
 const config = require('./config')
 const Discord = require('discord.js')
 const Commands = require('./handler/commands.js')
-const mc = require('minecraft-server-util')
+const Minecraft = require('./botfunctions/minecraft.js')
 
 var client = new Discord.Client()
 client.config = config
 
 new WS(config.web.port, client)
 new Commands(Discord, client)
+
 
 client.on('message', message => {
     if (!message.content.startsWith(config.discord.prefix) || message.author.bot) return;
@@ -32,17 +33,8 @@ client.on('ready', () => {
         },
         status: 'dnd'
     })
-    
-    // Update mc Channel
-    setInterval(function () {
-        mc.status('mc.tks.wtf')
-            .then((response) => {
-                client.channels.cache.get("770239786597351444").setName(`🟢mc_server_${response.onlinePlayers}-${response.maxPlayers}`)
-            })
-            .catch((error) => {
-                client.channels.cache.get("770239786597351444").setName(`🔴mc_server_offline`)
-            });
-    }, 120000)
+
+    new Minecraft(Discord, client, '770239786597351444', '772453177395249162', 'mc.tks.wtf')
 
 })
 
