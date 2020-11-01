@@ -17,14 +17,6 @@ class VoiceUtil {
 		return voiceChannel
 	}
 
-	// getVoiceChannel(client, user) {
-	// 	let member
-	// 	client.guilds.cache.forEach(guild => {
-	// 		if (!member) member = guild.member(user.id)
-	// 	})
-	// 	return member.voice.channel
-	// }
-
 	async connectVoiceChannel(channel) {
 		if (!channel) return Promise.reject('Invalid channel')
 		if (!channel.joinable) return Promise.reject('No permissions to join voice channel')
@@ -57,7 +49,7 @@ class VoiceUtil {
 		this.dispatcher.on('error', console.error);
 
 		this.dispatcher.setVolume(this.volume / 10)
-		
+
 		this.dispatcher.on('finish', () => {
 			if (isStream(source) && source.stop) {
 				source.stop()
