@@ -23,17 +23,5 @@ module.exports = {
         } else {
             message.reply("<:uwot_pepega:767928479287083050> 📣 you are not in a VC I can track")
         }
-
-        if (message.channel.type == "text") {
-            try {
-                //message.delete() 
-                message.react('🗑️')
-                message.react('3️⃣')
-                message.react('2️⃣')
-                message.react('1️⃣')
-                message.react('0️⃣').then(() => message.delete())
-
-            } catch { }
-        }
     },
 }
