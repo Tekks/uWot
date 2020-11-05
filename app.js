@@ -29,6 +29,7 @@ client.on('ready', () => {
     console.log(`Prefix: ${config.discord.prefix}`)
     client.user.setPresence({
         activity: {
+            type: "LISTENING",
             name: `${config.discord.prefix}help ${config.discord.prefix}honk`
         },
         status: 'dnd'
