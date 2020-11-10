@@ -41,15 +41,18 @@ class Minecraft {
             mc.status(that.serverAddress)
                 .then((response) => {
                     var i = 1
+                    var resp = response.samplePlayers
+                    if (resp === null){ resp = [] }
                     embed.setDescription('```' + response.onlinePlayers + ' of ' + response.maxPlayers + ' Players online```').setColor('#00ff00')
-                    if (response.samplePlayers === that.getPlayerMemory()) { return } else { that.setPlayerMemory(response.samplePlayers) }
-                    if (response.samplePlayers != null) {
-                        response.samplePlayers.forEach(player => { embed.addField(`Player ${i}`, player.name, true); i++ });
+                    if (resp.length === that.getPlayerMemory()) { return } else { that.setPlayerMemory(resp.length) }
+                    if (resp != null) {
+                        resp.forEach(player => { embed.addField(`Player ${i}`, player.name, true); i++ });
                     }
                     that.client.channels.cache.get(that.channelId).messages.fetch(that.messageId)
                         .then(message => message.edit(embed))
                 })
-                .catch(() => {
+                .catch((error) => {
+                    if (that.getPlayerMemory() == null) { return } else { that.setPlayerMemory(null) }
                     embed.setDescription('```Server offline```').setColor('#ff0000')
                     that.client.channels.cache.get(that.channelId).messages.fetch(that.messageId)
                         .then(message => message.edit(embed))
