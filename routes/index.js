@@ -3,6 +3,7 @@ var router = express.Router()
 var stats = require('../util/stats')
 
 module.exports = function (client) {
+  
   router.get('/', function (req, res, next) {
     var guilds = client.guilds.cache.size
     var memberCounts = stats.getMemberCounts(client)
