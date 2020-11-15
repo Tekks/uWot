@@ -1,11 +1,7 @@
 var path = require('path')
-var logger = require('morgan');
 var express = require('express');
-var bodyParser = require("body-parser");
 var createError = require('http-errors');
 var cookieParser = require('cookie-parser');
-const morgan = require('morgan');
-
 
 /**
  * Websocket
@@ -36,11 +32,13 @@ class WebSocket {
   }
 
   registerRoots() {
+    
     // Search Engines
     this.app.get('/robots.txt', function (req, res) {
       res.type('text/plain');
       res.send("User-agent: *\nDisallow: /");
     });
+
     // Router
     this.app.use('/', require('../routes/index')(this.client));
     this.app.use('/uwot', require('../routes/uwot')(this.client));
