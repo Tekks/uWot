@@ -15,8 +15,9 @@ class WebSocket {
     this.client = client
     this.app = express()
 
+    // Engine   
     this.app.set('views', path.join(__dirname, '/../views'));
-    this.app.set('view engine', 'pug');
+    this.app.set('view engine', 'ejs');
 
     //this.app.use(logger('dev'));
     this.app.use(express.json());
@@ -41,7 +42,6 @@ class WebSocket {
 
     // Router
     this.app.use('/', require('../routes/index')(this.client));
-    this.app.use('/uwot', require('../routes/uwot')(this.client));
     this.app.use('/api/lametric/uwot/poll', require('../routes/api')(this.client));
     this.app.use('/api/lametric/uwot/push', require('../routes/callback')(this.client));
 
@@ -51,10 +51,12 @@ class WebSocket {
     });
 
     this.app.use(function (err, req, res, next) {
-      res.locals.message = err.message;
-      res.locals.error = req.app.get('env') === 'development' ? err : {};
-      res.status(err.status || 500);
-      res.render('error');
+      res.render('error',
+      {
+        title: 'About Me | Error',
+        subTitle: 'About Me | Error',
+        err: err
+      });
     });
 
   }

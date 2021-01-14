@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <%- include('layout/header'); %>
+</head>
+
+<body id="page-top">
+
+<!-- Navigation-->
+
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top py-3 bg-dark" id="mainNav">
+  <div class="container"><a class="navbar-brand js-scroll-trigger text-light" href="https://tks.wtf#page-top"><%=subTitle %></a>
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+      data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+      aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ml-auto my-2 my-lg-0">
+        <li class="nav-item"><a class="nav-link js-scroll-trigger text-light" href="#uwot">uWot Bot</a></li>
+        <li class="nav-item"><a class="nav-link js-scroll-trigger text-light" href="#about">About Me</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Masthead-->
+
+
+<header class="masthead h-100">
+    <div class="container h-100">
+      <div class="row h-100 align-items-center justify-content-center text-center">
+        <div class="col-lg-10 align-self-end">
+          <h1 class="text-uppercase text-white font-weight-bold">Error <%=err.status %></h1>
+          <hr class="divider my-4"/>
+        </div>
+        <div class="col-lg-8 align-self-baseline">
+          <p class="text-white-75 font-weight-light mb-5"><%=err.message %></p>
+        </div>
+      </div>
+    </div>
+  </header>
+
+<!-- Footer-->
+<%- include('layout/footer'); %>
+
+<!-- Bootstrap core JS-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
+
+<!-- Third party plugin JS-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+
+<!-- Core theme JS-->
+<script src="/js/scripts.js"></script>
+</body>
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <%- include('layout/header'); %>
+</head>
+
+<body id="page-top">
+
+<!-- Navigation-->
+
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top py-3 bg-dark" id="mainNav">
+  <div class="container"><a class="navbar-brand js-scroll-trigger text-light" href="#page-top"><%= subTitle %></a>
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+      data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+      aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ml-auto my-2 my-lg-0">
+        <li class="nav-item"><a class="nav-link js-scroll-trigger text-light" href="#uwot">uWot Bot</a></li>
+        <li class="nav-item"><a class="nav-link js-scroll-trigger text-light" href="#about">About Me</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Masthead-->
+
+<header class="masthead h-100">
+  <div class="container h-100">
+    <div class="row h-100 align-items-center justify-content-center text-center">
+      <div class="col-lg-10 align-self-end">
+        <h1 class="text-uppercase text-white font-weight-bold">Hi, I'm Andy</h1>
+        <hr class="divider my-4">
+      </div>
+      <div class="col-lg-8 align-self-baseline">
+        <p class="text-white-75 font-weight-light mb-5">SE IoT Architect @ <a href="https://it.schwarz"
+            target="_blank">it.schwarz</a></p><a class="btn btn-primary btn-xl js-scroll-trigger" href="#uwot">More</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- uWot-->
+
+<section class="page-section bg-dark c-shadow-middle" id="uwot">
+  <div class="container text-white">
+    <h2 class="text-center mt-0">uWot Discord Bot</h2>
+    <hr class="divider my-4">
+    <div class="row">
+      <div class="col-lg-4 col-md-5 text-center">
+        <div class="mt-5"><i class="fas fa-4x fa-bullhorn text-primary mb-5"></i>
+          <h3 class="h4 mb-2">AirHorn</h3>
+          <p class="h3 text-muted mb-0">Honks at People </p>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-5 text-center">
+        <div class="mt-5"><i class="fas fa-4x fa-server text-primary mb-5"></i>
+          <h3 class="h4 mb-2">Servers</h3>
+          <p class="h3 text-muted mb-0">Active on <span style="color:#f4623a"> <%=guilds %> </span>Servers</p>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-5 text-center">
+        <div class="mt-5"><i class="fas fa-4x fa-heart text-primary mb-5"></i>
+          <h3 class="h4 mb-2">Made with Love</h3>
+          <p class="h3 text-muted mb-0"> <span style="color:#f4623a"> <%=totalUsers %> </span>Pepegas love it</p>
+        </div>
+      </div>
+    </div>
+    <div class="row align-items-center justify-content-center text-center mt-5"><a class="btn btn-primary btn-xl"
+        target="_blank"
+        href="https://discordapp.com/oauth2/authorize?client_id=<%=botId%>&amp;scope=bot&amp;permissions=3157056">Add
+        uWot to your Server</a></div>
+  </div>
+</section>
+
+<!-- About-->
+
+<section class="page-section bg-primary h-100 c-shadow-middle" id="about">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-8 text-center">
+        <h2 class="text-white mt-0">Still todo....</h2>
+        <hr class="divider light my-4">
+        <p class="text-white-50 mb-4">:></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer-->
+<%- include('layout/footer'); %>
+
+<!-- Bootstrap core JS-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
+
+<!-- Third party plugin JS-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+
+<!-- Core theme JS-->
+<script src="/js/scripts.js"></script>
+</body>
+</html>
