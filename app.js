@@ -2,7 +2,7 @@ const WS = require('./handler/ws')
 const config = require('./config')
 const Discord = require('discord.js')
 const Commands = require('./handler/commands.js')
-const Minecraft = require('./botfunctions/minecraft.js')
+//const Minecraft = require('./botfunctions/minecraft.js')
 
 var client = new Discord.Client()
 client.config = config
@@ -35,7 +35,7 @@ client.on('ready', () => {
         status: 'dnd'
     })
 
-    new Minecraft(Discord, client, '770239786597351444', '772453177395249162', 'mc.tks.wtf')
+    //new Minecraft(Discord, client, '770239786597351444', '772453177395249162', 'mc.tks.wtf')
 
 })
 

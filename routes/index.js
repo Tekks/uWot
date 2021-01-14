@@ -7,11 +7,10 @@ module.exports = function (client) {
   router.get('/', function (req, res, next) {
     var guilds = client.guilds.cache.size
     var memberCounts = stats.getMemberCounts(client)
-
     res.render('index',
       {
-        title: '🏗️ Under Construction',
-        subTitle: '🚧 This page is under construction 🚧',
+        title: 'About Me | Main',
+        subTitle: 'About Me | Main',
         botId: client.user.id,
         totalUsers: memberCounts.users.total(),
         guilds: guilds
