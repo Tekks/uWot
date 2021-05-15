@@ -24,6 +24,7 @@ class WebSocket {
     this.app.use(express.urlencoded({ extended: false }));
     this.app.use(cookieParser());
     this.app.use(express.static(path.join(__dirname, '/../public')));
+    this.app.use(express.static(path.join(__dirname, '/../public/cdn_upload')));
 
     this.registerRoots()
 
