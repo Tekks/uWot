@@ -23,9 +23,9 @@ module.exports = function (client) {
         let voiceChannel = voiceUtil.getVoiceChannel(client, req.body.member.user.id)
         if (voiceChannel) {
             voiceUtil.connectVoiceChannel(voiceChannel)
-            .then(() => voiceUtil.playAudio('/var/www/tks.wtf/public/sounds/airhorn.mp3', true))
-            .then(sendMsg(url, 4, "<:uwot_pepega:767928479287083050> 📣 Honk 66 executed"))
-            .catch(e => sendMsg(url, 4, `<:uwot_pepega:767928479287083050> 📣 ${e}`))
+                .then(() => voiceUtil.playAudio('/var/www/tks.wtf/public/sounds/airhorn.mp3', true))
+                .then(sendMsg(url, 4, "<:uwot_pepega:767928479287083050> 📣 Honk 66 executed"))
+                .catch(e => sendMsg(url, 4, `<:uwot_pepega:767928479287083050> 📣 ${e}`))
         } else {
             sendMsg(url, 4, "<:uwot_pepega:767928479287083050> 📣 you are not in a VC I can track")
         }
