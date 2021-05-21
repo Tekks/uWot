@@ -9,7 +9,7 @@ module.exports = function (client) {
         res.json()
 
         var voiceUtil = new VoiceUtil()
-        
+
         var user = client.users.cache.find(u => u.tag === req.query.discordUsername)
         if (!user) {
             user = client.users.cache.find(u => u.id === req.query.discordUserId)
