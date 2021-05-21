@@ -24,7 +24,6 @@ class WebSocket {
     this.app.use(express.urlencoded({ extended: false }));
     this.app.use(cookieParser());
     this.app.use(express.static(path.join(__dirname, '/../public')));
-    this.app.use(express.static(path.join(__dirname, '/../public/cdn_upload')));
 
     this.registerRoots()
 
@@ -43,6 +42,7 @@ class WebSocket {
 
     // Router
     this.app.use('/', require('../routes/index')(this.client));
+    this.app.use('/commands', require('../routes/commands')(this.client));
     this.app.use('/api/lametric/uwot/poll', require('../routes/api')(this.client));
     this.app.use('/api/lametric/uwot/push', require('../routes/callback')(this.client));
 

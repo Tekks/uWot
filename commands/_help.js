@@ -12,7 +12,7 @@ module.exports = {
         const embed = new Discord.MessageEmbed()
             .setColor('#fedd58')
             .setTitle('Help - Commands')
-            .setAuthor('uWot Bot', 'https://cdn.discordapp.com/avatars/755913893062246511/2d6c33c51b36565a2f57ad1a1fc508b1.png', 'https://tks.wtf/#uwot')
+            .setAuthor('Add me', 'https://cdn.discordapp.com/avatars/755913893062246511/2d6c33c51b36565a2f57ad1a1fc508b1.png', config.discord.invite)
             .setFooter(`Response Time: ${Date.now() - message.createdTimestamp} ms`)
         if (!args.length) {
             commands.map(command => embed.addField(config.discord.prefix + command.name, command.description))
