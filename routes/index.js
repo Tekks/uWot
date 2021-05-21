@@ -1,3 +1,4 @@
+const config = require('../config.js')
 var express = require('express')
 var router = express.Router()
 var stats = require('../util/stats')
@@ -11,7 +12,7 @@ module.exports = function (client) {
       {
         title: 'About Me | Main',
         subTitle: 'About Me | Main',
-        botId: client.user.id,
+        botId: config.discord.invite,
         totalUsers: memberCounts.users.total(),
         guilds: guilds
       })

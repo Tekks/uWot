@@ -58,10 +58,7 @@ class Minecraft {
                         .then(message => message.edit(embed))
                 })    
         }, 5000)
-
-
     }
-
 
     changeChannelName() {
         var that = this

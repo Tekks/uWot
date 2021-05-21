@@ -20,13 +20,14 @@ client.on('message', message => {
         const command = client.commands.get(name) || client.commands.find(c => c.aliases && c.aliases.includes(name))
         command.execute(client, message, args)
     } catch (error) {
-        console.log(error)
     }
 })
 
 client.on('ready', () => {
     console.log(`Connected as ${client.user.tag}`)
     console.log(`Prefix: ${config.discord.prefix}`)
+    console.log(`ServerList:`)
+    client.guilds.cache.forEach(guild => console.log(`* ${guild.name}`))
     client.user.setPresence({
         activity: {
             type: "LISTENING",
@@ -34,7 +35,6 @@ client.on('ready', () => {
         },
         status: 'dnd'
     })
-
     //new Minecraft(Discord, client, '770239786597351444', '772453177395249162', 'mc.tks.wtf')
 
 })

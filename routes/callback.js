@@ -32,4 +32,3 @@ module.exports = function (client) {
     return router;
 
 }
-
